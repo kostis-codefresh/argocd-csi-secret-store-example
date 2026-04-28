@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: gitops-secrets-app
-        image: docker.io/kostiscodefresh/simple-secret-app:latest 
+        image: ghcr.io/kostis-codefresh/argocd-csi-secret-store-example:latest 
         imagePullPolicy: Always   
         ports:
         - containerPort: 8080
