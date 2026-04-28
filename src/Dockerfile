@@ -12,6 +12,7 @@ EXPOSE 8080
 
 RUN apk add --no-cache ca-certificates bash
 
+COPY --from=build-env /tmp/workdir/static /app/static
 COPY --from=build-env /tmp/workdir/simple-secret-app /app/simple-secret-app
 
 COPY credentials /secrets/credentials
