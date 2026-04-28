@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Microservice Status Dashboard</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <img src="transparent-logo.png" class="center">
+
+    <h1>My simple Secret App</h1>
+
+    <div class="table-wrap">
+    <table class="creds-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="field-name">Config location</td>
+          <td><code>{{.ConfigLocation}}</code></td>
+        </tr>
+        <tr>
+          <td class="field-name">Connection string</td>
+          <td><code>{{.DbCon}}</code></td>
+        </tr>
+        <tr>
+          <td class="field-name">Username</td>
+          <td><code>{{.DbUser}}</code></td>
+        </tr>
+        <tr>
+          <td class="field-name">Password</td>
+          <td><code class="sensitive">{{.DbPassword}}</code></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
