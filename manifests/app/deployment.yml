@@ -13,16 +13,17 @@ spec:
       labels:
         app: gitops-secrets-app
     spec:
+      serviceAccountName: secret-sa
       containers:
       - name: gitops-secrets-app
-        image: ghcr.io/kostis-codefresh/argocd-csi-secret-store-example:latest 
-        imagePullPolicy: Always   
+        image: ghcr.io/kostis-codefresh/argocd-csi-secret-store-example:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         volumeMounts:
         - name: mysql
           mountPath: "/secrets"
-          readOnly: true      
+          readOnly: true
         livenessProbe:
           httpGet:
             path: /health/live
@@ -33,7 +34,10 @@ spec:
             port: 8080
       volumes:
       - name: mysql
-        secret:
-          secretName: mysql-credentials
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "vault-db-credentials"
  
            
